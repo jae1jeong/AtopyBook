@@ -12,6 +12,6 @@ data class DailyRecord(
     val itch:Int?=null,
     val pain:Int?=null,
     val ateFoods:List<String> = emptyList(),
-    
+
 
 )

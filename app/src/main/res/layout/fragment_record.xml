@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.RecordFragment">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/today"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/record_top_left_gl"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/record_top_left_gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="30dp" />
+
+        <TextView
+            android:id="@+id/record_tv_today_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            app:layout_constraintStart_toEndOf="@id/record_top_left_gl"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="6.14" />
+
+        <ImageButton
+            android:id="@+id/record_btn_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintStart_toEndOf="@id/record_top_left_gl"
+            app:layout_constraintTop_toBottomOf="@+id/record_tv_today_date" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/record_top_right_gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="30dp" />
+
+
+        <ImageButton
+            android:id="@+id/record_btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintEnd_toStartOf="@+id/record_top_right_gl"
+            app:layout_constraintTop_toBottomOf="@+id/record_tv_today_date" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            app:layout_constraintTop_toBottomOf="@+id/record_btn_left"
+            android:id="@+id/record_vp2_calendar"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toStartOf="@+id/record_top_right_gl"
+            android:layout_height="wrap_content"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
