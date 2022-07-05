@@ -10,20 +10,21 @@ import com.james.atopybook.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SubFragment : Fragment(R.layout.fragment_sub) {
+class CalendarFragment : Fragment() {
 
-    private lateinit var viewModel: SubViewModel
+    private lateinit var viewModel: CalendarViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_sub, container, false)
+        return inflater.inflate(R.layout.fragment_calendar, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SubViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(CalendarViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

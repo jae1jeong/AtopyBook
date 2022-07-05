@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="HOME" />
-    <item android:title="SUB" />
+    <item android:id="@+id/recordFragment" android:title="HOME" />
+    <item android:id="@+id/subFragment" android:title="SUB" />
 
 </menu>

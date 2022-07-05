@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="typeName"
+            type="String" />
+        <variable
+            name="measure"
+            type="int" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/symptom_measure_tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{typeName}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="가려움" />
+
+    <TextView
+        android:id="@+id/symptom_measure_tv_measure"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="@{measure == 0 ? @string/none_type : String.valueOf(measure)}"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/symptom_measure_tv_type"
+        app:layout_constraintStart_toStartOf="@+id/symptom_measure_tv_type"
+        app:layout_constraintTop_toBottomOf="@+id/symptom_measure_tv_type"
+        tools:text="10" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

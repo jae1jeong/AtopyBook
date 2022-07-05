@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.james.atopybook.R
 import com.james.atopybook.databinding.FragmentRecordBinding
@@ -17,13 +18,14 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
     private val binding get() = _binding!!
     private val recordViewModel by viewModels<RecordViewModel>()
 
-    private lateinit var viewModel: RecordViewModel
+//    private lateinit var viewModel: RecordViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_record, container, false)
+        _binding = DataBindingUtil.inflate(inflater,R.layout.fragment_record,container,false)
+        return binding.root
     }
 
     private fun observeData(){

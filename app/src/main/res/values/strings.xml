@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">AtopyBook</string>
-    <string name="today">today</string>
+    <string name="today">TODAY</string>
+    <string name="record">기록하기</string>
+    <string name="itch">가려움</string>
+    <string name="get_red">발진</string>
+    <string name="dry">건조함</string>
+    <string name="hurts">통증</string>
+    <string name="atopy_symptom">아토피 증상</string>
+    <string name="how_was_today">오늘 증상은 어땠나요?</string>
+    <string name="ointment">복용/도포약</string>
+    <string name="ointment_desc">꾸준히 약을 복용하는지,\n스스로 체크하세요.</string>
+    <string name="ointment_sub_desc">오늘 빼먹은 약은 없으신가요?</string>
+    <string name="food">음식</string>
+    <string name="food_desc">음식은 아토피에 가장 많은 영향을 받아요.\n알레르기 요인을 추적 할 수 있어요.</string>
+    <string name="food_sub_desc">오늘 무엇을 드셨나요?</string>
+    <string name="none_type">-</string>
 </resources>
