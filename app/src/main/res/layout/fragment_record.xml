@@ -80,8 +80,7 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/record_vp2_calendar"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/blue"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toStartOf="@+id/record_top_right_gl"
             app:layout_constraintStart_toStartOf="@+id/record_top_left_gl"
             app:layout_constraintTop_toBottomOf="@+id/record_btn_left" />
