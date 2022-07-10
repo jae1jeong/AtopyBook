@@ -23,42 +23,50 @@ class CalendarView @JvmOverloads constructor(
 
     private var _height: Float = 0f
 
-
     init {
         context.withStyledAttributes(attrs, R.styleable.CalendarView, defStyleAttr, defStyleRes) {
             _height = getDimension(R.styleable.CalendarView_dayHeight, 0f)
         }
     }
 
+    /**
+     * Measure
+     */
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val h = paddingTop + paddingBottom + max(suggestedMinimumHeight,(_height * WEEKS_PER_MONTH).toInt())
-        setMeasuredDimension(getDefaultSize(suggestedMinimumWidth,widthMeasureSpec),h)
-
+        val h = paddingTop + paddingBottom + max(suggestedMinimumHeight, (_height * WEEKS_PER_MONTH).toInt())
+        setMeasuredDimension(getDefaultSize(suggestedMinimumWidth, widthMeasureSpec), h)
     }
 
-
+    /**
+     * Layout
+     */
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         val iWidth = (width / DAYS_PER_WEEK).toFloat()
         val iHeight = (height / WEEKS_PER_MONTH).toFloat()
 
         var index = 0
-        children.forEach { v ->
-            val left = (index % DAYS_PER_WEEK).toFloat()
-            val top = (index / DAYS_PER_WEEK).toFloat()
-            v.layout(left.toInt(), top.toInt(), (left + iWidth).toInt(), (top + iHeight).toInt())
+        children.forEach { view ->
+            val left = (index % DAYS_PER_WEEK) * iWidth
+            val top = (index / DAYS_PER_WEEK) * iHeight
+
+            view.layout(left.toInt(), top.toInt(), (left + iWidth).toInt(), (top + iHeight).toInt())
+
             index++
         }
     }
 
-
-    fun initCalendar(firstDayOfMonth:DateTime,list:List<DateTime>){
+    /**
+     * 달력 그리기 시작한다.
+     * @param firstDayOfMonth   한 달의 시작 요일
+     * @param list              달력이 가지고 있는 요일과 이벤트 목록 (총 42개)
+     */
+    fun initCalendar(firstDayOfMonth: DateTime, list: List<DateTime>) {
         list.forEach {
             addView(DayItemView(
-                context=context,
+                context = context,
                 date = it,
                 firstDayOfMonth = firstDayOfMonth
             ))
         }
     }
-
 }

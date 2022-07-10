@@ -14,6 +14,7 @@ import androidx.core.content.withStyledAttributes
 import com.james.atopybook.R
 import com.james.atopybook.utlities.CalendarUtils.Companion.getDateColor
 import com.james.atopybook.utlities.CalendarUtils.Companion.isSameMonth
+
 import org.joda.time.DateTime
 
 class DayItemView @JvmOverloads constructor(
@@ -26,10 +27,12 @@ class DayItemView @JvmOverloads constructor(
 ) : View(ContextThemeWrapper(context, defStyleRes), attrs, defStyleAttr) {
 
     private val bounds = Rect()
-    private var paint:Paint = Paint()
 
-    init{
-        context.withStyledAttributes(attrs,R.styleable.CalendarView,defStyleAttr,defStyleRes){
+    private var paint: Paint = Paint()
+
+    init {
+        /* Attributes */
+        context.withStyledAttributes(attrs, R.styleable.CalendarView, defStyleAttr, defStyleRes) {
             val dayTextSize = getDimensionPixelSize(R.styleable.CalendarView_dayTextSize, 0).toFloat()
 
             /* 흰색 배경에 유색 글씨 */
@@ -44,7 +47,6 @@ class DayItemView @JvmOverloads constructor(
         }
     }
 
-
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         if (canvas == null) return
@@ -58,5 +60,4 @@ class DayItemView @JvmOverloads constructor(
             paint
         )
     }
-
 }

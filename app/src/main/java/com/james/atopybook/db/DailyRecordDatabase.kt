@@ -23,6 +23,5 @@ abstract class DailyRecordDatabase:RoomDatabase() {
                     }
                 }
             }).build()
-
     }
 }

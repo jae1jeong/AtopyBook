@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_record_xml_constraintlayout_scene"
         tools:context=".views.RecordFragment">
 
         <TextView
@@ -14,8 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="@string/today"
-            android:textSize="16sp"
             android:textColor="@color/text_black"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/record_top_left_gl"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,6 +39,7 @@
             tools:text="6.14" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="6월"
@@ -143,5 +146,5 @@
             app:layout_constraintTop_toBottomOf="@+id/record_cp_phil_card" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

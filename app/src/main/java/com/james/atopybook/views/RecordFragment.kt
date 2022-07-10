@@ -30,34 +30,23 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
         savedInstanceState: Bundle?
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_record, container, false)
-        calendarAdapter = CalendarAdapter(requireActivity())
+        calendarAdapter = CalendarAdapter(childFragmentManager,lifecycle)
         binding.recordVp2Calendar.apply {
             adapter = calendarAdapter
             setCurrentItem(CalendarAdapter.START_POSITION,false)
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    // viewPager
-                    val view = (binding.recordVp2Calendar[0] as RecyclerView).layoutManager?.findViewByPosition(position)
-                    view?.post {
-                        val wMeasureSpec =
-                            View.MeasureSpec.makeMeasureSpec(view.width, View.MeasureSpec.EXACTLY)
-                        val hMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-                        view.measure(wMeasureSpec, hMeasureSpec)
-                        if (binding.recordVp2Calendar.layoutParams.height != view.measuredHeight) {
-                            binding.recordVp2Calendar.layoutParams = (binding.recordVp2Calendar.layoutParams).also { lp ->
-                                lp.height = view.measuredHeight
-                            }
-                        }
-                    }
-                }
-            })
         }
         return binding.root
     }
 
-    private fun observeData() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeData()
+    }
 
+    private fun observeData() {
+        recordViewModel.currentDate.observe(viewLifecycleOwner,{
+            binding.recordTvTodayDate.text = it.toString("MM")
+        })
     }
 
     override fun onDestroyView() {
