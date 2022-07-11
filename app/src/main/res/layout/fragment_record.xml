@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.james.atopybook.views.RecordViewModel" />
+    </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:id="@+id/constraintLayout"
@@ -34,6 +39,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="32sp"
+            android:text="@{viewModel.todayDateFormat}"
             app:layout_constraintStart_toEndOf="@id/record_top_left_gl"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             tools:text="6.14" />
@@ -79,6 +85,13 @@
             android:src="@drawable/ic_arrow_right"
             app:layout_constraintEnd_toStartOf="@+id/record_top_right_gl"
             app:layout_constraintTop_toBottomOf="@+id/record_tv_today_date" />
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/component_calendar_days"
+            />
+
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/record_vp2_calendar"

@@ -9,12 +9,21 @@
         android:id="@+id/recordFragment"
         android:name="com.james.atopybook.views.RecordFragment"
         android:label="fragment_record"
-        tools:layout="@layout/fragment_record" />
+        tools:layout="@layout/fragment_record" >
+        <action
+            android:id="@+id/action_recordFragment_to_checkSymptomFragment"
+            app:destination="@id/checkSymptomFragment" />
+    </fragment>
     <fragment
         android:id="@+id/subFragment"
         android:name="com.james.atopybook.views.SubFragment"
         android:label="fragment_sub"
         tools:layout="@layout/fragment_sub" />
+    <fragment
+        android:id="@+id/checkSymptomFragment"
+        android:name="com.james.atopybook.views.CheckSymptomFragment"
+        android:label="check_symptom_fragment"
+        tools:layout="@layout/check_symptom_fragment" />
 
 
 </navigation>

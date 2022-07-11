@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.james.atopybook.views.CheckSymptomViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="26dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_gray_circle"
+        android:paddingHorizontal="13dp"
+        android:paddingVertical="11dp"
+        android:onClick="@{viewModel.onBackPress}"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintStart_toEndOf="@+id/top_content_gl_left"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_content_gl_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/check_symptom_gl_left"
+        />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="오늘은 어땠나요?"
+        android:textColor="@color/text_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/top_content_gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="어제와 비교하며 증상을 객관적으로 기록해주세요."
+        android:textColor="@color/text_light_black"
+        android:textSize="13sp"
+        app:layout_constraintStart_toEndOf="@+id/top_content_gl_left"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

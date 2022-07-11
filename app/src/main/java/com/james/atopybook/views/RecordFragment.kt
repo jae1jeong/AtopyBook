@@ -1,16 +1,13 @@
 package com.james.atopybook.views
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
+import androidx.navigation.fragment.findNavController
 import com.james.atopybook.R
 import com.james.atopybook.databinding.FragmentRecordBinding
 import com.james.atopybook.views.calendar.CalendarAdapter
@@ -20,10 +17,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class RecordFragment : Fragment(R.layout.fragment_record) {
     private var _binding: FragmentRecordBinding? = null
     private val binding get() = _binding!!
-    private val recordViewModel by viewModels<RecordViewModel>()
+    private val viewModel by viewModels<RecordViewModel>()
     private lateinit var calendarAdapter: CalendarAdapter
 
-//    private lateinit var viewModel: RecordViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +31,7 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
             adapter = calendarAdapter
             setCurrentItem(CalendarAdapter.START_POSITION,false)
         }
+        binding.viewModel = viewModel
         return binding.root
     }
 
@@ -44,9 +41,17 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
     }
 
     private fun observeData() {
-        recordViewModel.currentDate.observe(viewLifecycleOwner,{
-            binding.recordTvTodayDate.text = it.toString("MM")
-        })
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        moveToCheckSymptom()
+    }
+
+    private fun moveToCheckSymptom(){
+        val action = RecordFragmentDirections.actionRecordFragmentToCheckSymptomFragment()
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

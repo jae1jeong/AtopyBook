@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="symptomType"
+            type="com.james.atopybook.utlities.CheckSymptomType" />
+
+        <variable
+            name="viewModel"
+            type="com.james.atopybook.views.CheckSymptomViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".views.CheckSymptomFragment">
+
+            <include
+                android:id="@+id/include5"
+                layout="@layout/component_check_symptom_top_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/component_check_symptom_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:checkSymptomViewModel="@{viewModel}"
+                app:key="@{symptomType.ITCH}"
+                app:layout_constraintTop_toBottomOf="@+id/include5"
+                app:subTitle="@{@string/how_much_is_it_compared_to_yesterday}" />
+
+            <include
+                android:id="@+id/include2"
+                layout="@layout/component_check_symptom_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:checkSymptomViewModel="@{viewModel}"
+                app:key="@{symptomType.GET_RED}"
+                app:layout_constraintTop_toBottomOf="@+id/include"
+                app:subTitle="@{@string/how_much_is_it_compared_to_yesterday}" />
+
+            <include
+                android:id="@+id/include3"
+                layout="@layout/component_check_symptom_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:checkSymptomViewModel="@{viewModel}"
+                app:key="@{symptomType.DRY}"
+                app:layout_constraintTop_toBottomOf="@+id/include2"
+                app:subTitle="@{@string/how_much_is_it_compared_to_yesterday}" />
+
+            <include
+                android:id="@+id/include4"
+                layout="@layout/component_check_symptom_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:checkSymptomViewModel="@{viewModel}"
+                app:key="@{symptomType.HURTS}"
+                app:layout_constraintTop_toBottomOf="@+id/include3"
+                app:subTitle="@{@string/how_much_is_it_compared_to_yesterday}" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                android:paddingVertical="18dp"
+                android:textSize="16sp"
+                android:onClick="@{viewModel.onNext}"
+                android:layout_marginTop="22dp"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

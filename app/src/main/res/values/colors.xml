@@ -13,4 +13,6 @@
     <color name="line_color">#D9D9D9</color>
     <color name="light_black">#353535</color>
     <color name="text_black">#292929</color>
+    <color name="text_light_gray">#80292929</color>
+    <color name="text_light_black">#626262</color>
 </resources>

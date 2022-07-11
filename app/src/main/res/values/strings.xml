@@ -15,4 +15,6 @@
     <string name="food_desc">음식은 아토피에 가장 많은 영향을 받아요.\n알레르기 요인을 추적 할 수 있어요.</string>
     <string name="food_sub_desc">오늘 무엇을 드셨나요?</string>
     <string name="none_type">-</string>
+    <string name="how_much_is_it_compared_to_yesterday">어제와 비교했을 때 어느 정도인가요?</string>
+    <string name="next">다음</string>
 </resources>
