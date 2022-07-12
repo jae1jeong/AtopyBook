@@ -1,10 +1,6 @@
 package com.james.atopybook.utlities.listener
 
-import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.alpha
-import com.james.atopybook.R
 
 class MotionLayoutListenerFactory {
     companion object{

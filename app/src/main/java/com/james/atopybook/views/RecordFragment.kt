@@ -1,14 +1,10 @@
 package com.james.atopybook.views
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.alpha
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -44,7 +40,7 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
 
     private fun initView() {
         // TODO: 2022/07/12 애니메이션 끝나면 화살표 방향 바꾸기
-        val transitionLayoutListener = MotionLayoutListenerFactory.create(startListener = motionStarted )
+        val transitionLayoutListener = MotionLayoutListenerFactory.create(startListener = motionStarted)
         binding.recordMotion.setTransitionListener(transitionLayoutListener)
 
     }
@@ -66,6 +62,7 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
         viewModel.nextCalendarEvent.observe(viewLifecycleOwner,{
             binding.recordVp2Calendar.setCurrentItem(binding.recordVp2Calendar.currentItem+1,true)
         })
+        binding.recordVp2Calendar.currentItem
     }
 
     override fun onResume() {
