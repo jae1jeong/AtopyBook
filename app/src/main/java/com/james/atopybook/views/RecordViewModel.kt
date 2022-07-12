@@ -16,4 +16,6 @@ class RecordViewModel @Inject constructor(): ViewModel() {
     val currentDate =  MutableLiveData<DateTime>()
     private val dateTimeFormatter = SimpleDateFormat("MM.dd",Locale.getDefault())
     val todayDateFormat = dateTimeFormatter.format(Date())
+
+
 }
