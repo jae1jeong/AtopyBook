@@ -1,6 +1,7 @@
 package com.james.atopybook.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.james.atopybook.databinding.FragmentRecordBinding
 import com.james.atopybook.utlities.listener.MotionLayoutListenerFactory
 import com.james.atopybook.views.calendar.CalendarAdapter
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class RecordFragment : Fragment(R.layout.fragment_record) {
@@ -62,7 +64,7 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
         viewModel.nextCalendarEvent.observe(viewLifecycleOwner,{
             binding.recordVp2Calendar.setCurrentItem(binding.recordVp2Calendar.currentItem+1,true)
         })
-        binding.recordVp2Calendar.currentItem
+        viewModel.currentMonth.observe(viewLifecycleOwner,binding.recordTvCurMonth::setText)
     }
 
     override fun onResume() {

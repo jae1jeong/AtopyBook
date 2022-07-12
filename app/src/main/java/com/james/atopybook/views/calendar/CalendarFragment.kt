@@ -1,16 +1,14 @@
 package com.james.atopybook.views.calendar
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.james.atopybook.R
 import com.james.atopybook.databinding.FragmentCalendarBinding
 import com.james.atopybook.utlities.CalendarUtils.Companion.getMonthList
-import com.james.atopybook.views.CalendarViewModel
 import com.james.atopybook.views.RecordViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import org.joda.time.DateTime
@@ -42,7 +40,6 @@ class CalendarFragment : Fragment() {
 
         _binding = FragmentCalendarBinding.bind(view)
 //        binding.calendarViewTvDate.text = DateTime(millis).toString("yyyy-MM")
-        viewModel.currentDate.value = DateTime(millis)
         binding.calendarView.initCalendar(DateTime(millis),getMonthList(DateTime(millis)))
         return binding.root
     }

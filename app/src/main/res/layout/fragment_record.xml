@@ -61,7 +61,6 @@
                 android:id="@+id/record_tv_cur_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6월"
                 android:textColor="@color/light_black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/record_btn_left"
