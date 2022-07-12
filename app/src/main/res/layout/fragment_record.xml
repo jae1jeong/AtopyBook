@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="viewModel"
             type="com.james.atopybook.views.RecordViewModel" />
@@ -38,74 +40,69 @@
             android:id="@+id/record_tv_today_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{viewModel.todayDateFormat}"
             android:textColor="@color/black"
             android:textSize="32sp"
-            android:text="@{viewModel.todayDateFormat}"
             app:layout_constraintStart_toEndOf="@id/record_top_left_gl"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             tools:text="6.14" />
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/record_cl_calendar"
-                android:alpha="0"
-                app:layout_constraintTop_toBottomOf="@+id/record_tv_today_date"
-                app:layout_constraintEnd_toStartOf="@+id/record_top_right_gl"
-                app:layout_constraintStart_toStartOf="@+id/record_top_left_gl"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/record_cl_calendar"
+            android:layout_width="0dp"
+            android:layout_height="0.1dp"
+            android:alpha="0"
+            app:layout_constraintEnd_toStartOf="@+id/record_top_right_gl"
+            app:layout_constraintStart_toStartOf="@+id/record_top_left_gl"
+            app:layout_constraintTop_toBottomOf="@+id/record_tv_today_date">
+
+            <TextView
+                android:id="@+id/record_tv_cur_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6월"
+                android:textColor="@color/light_black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/record_btn_left"
+                app:layout_constraintEnd_toStartOf="@+id/record_btn_right"
+                app:layout_constraintStart_toEndOf="@+id/record_btn_left"
+                app:layout_constraintTop_toTopOf="@+id/record_btn_left" />
+
+            <ImageView
+                android:id="@+id/record_btn_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_gray_circle"
+                android:onClick="@{viewModel.onLeftBtnClick}"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="13dp"
+                android:src="@drawable/ic_arrow_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/record_btn_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_gray_circle"
+                android:onClick="@{viewModel.onRightBtnClick}"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="13dp"
+                android:src="@drawable/ic_arrow_right"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/record_vp2_calendar"
                 android:layout_width="0dp"
-                android:layout_height="0.1dp">
-                <TextView
-                    android:id="@+id/record_tv_cur_month"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="6월"
-                    android:textColor="@color/light_black"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/record_btn_left"
-                    app:layout_constraintEnd_toStartOf="@+id/record_btn_right"
-                    app:layout_constraintStart_toEndOf="@+id/record_btn_left"
-                    app:layout_constraintTop_toTopOf="@+id/record_btn_left" />
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/record_tv_cur_month" />
 
-                <ImageView
-                    android:id="@+id/record_btn_left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_gray_circle"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="13dp"
-                    android:src="@drawable/ic_arrow_left"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/record_btn_right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_gray_circle"
-                    android:paddingHorizontal="10dp"
-                    android:paddingVertical="13dp"
-                    android:src="@drawable/ic_arrow_right"
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <include
-                    android:id="@+id/record_vg_days"
-                    layout="@layout/component_calendar_days"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/record_tv_cur_month" />
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/record_vp2_calendar"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/record_vg_days" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -116,19 +113,12 @@
             app:layout_constraintGuide_end="20dp" />
 
 
-
-
-
-
-
-
-
-            <ImageView
-                android:id="@+id/record_top_line"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@color/light_gray"
-                app:layout_constraintTop_toBottomOf="@+id/record_tv_today_date" />
+        <ImageView
+            android:id="@+id/record_top_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@+id/record_tv_today_date" />
 
 
         <ImageView
@@ -143,16 +133,16 @@
             app:layout_constraintEnd_toStartOf="@+id/record_top_right_gl"
             app:layout_constraintTop_toTopOf="@+id/record_top_line" />
 
-            <include
-                android:id="@+id/record_cp_symptom_card"
-                layout="@layout/component_symptom_card"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:cardDesc="@{@string/how_was_today}"
-                app:cardTitle="@{@string/atopy_symptom}"
-                app:layout_constraintEnd_toStartOf="@+id/record_top_right_gl"
-                app:layout_constraintStart_toStartOf="@+id/record_top_left_gl"
-                app:layout_constraintTop_toBottomOf="@+id/record_cl_calendar" />
+        <include
+            android:id="@+id/record_cp_symptom_card"
+            layout="@layout/component_symptom_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardDesc="@{@string/how_was_today}"
+            app:cardTitle="@{@string/atopy_symptom}"
+            app:layout_constraintEnd_toStartOf="@+id/record_top_right_gl"
+            app:layout_constraintStart_toStartOf="@+id/record_top_left_gl"
+            app:layout_constraintTop_toBottomOf="@+id/record_cl_calendar" />
 
         <include
             android:id="@+id/record_cp_phil_card"

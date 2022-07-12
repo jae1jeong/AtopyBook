@@ -2,6 +2,7 @@ package com.james.atopybook.views.custom
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.text.TextPaint
@@ -22,9 +23,10 @@ class DayItemView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     @AttrRes private val defStyleAttr: Int = R.attr.itemViewStyle,
     @StyleRes private val defStyleRes: Int = R.style.Calendar_ItemViewStyle,
-    private val date: DateTime = DateTime(),
-    private val firstDayOfMonth: DateTime = DateTime()
-) : View(ContextThemeWrapper(context, defStyleRes), attrs, defStyleAttr) {
+    private val date: DateTime?,
+    private val firstDayOfMonth: DateTime = DateTime(),
+    private val headerText:String?=null
+    ) : View(ContextThemeWrapper(context, defStyleRes), attrs, defStyleAttr) {
 
     private val bounds = Rect()
 
@@ -39,10 +41,16 @@ class DayItemView @JvmOverloads constructor(
             paint = TextPaint().apply {
                 isAntiAlias = true
                 textSize = dayTextSize
-                color = getDateColor(date.dayOfWeek)
-                if (!isSameMonth(date, firstDayOfMonth)) {
-                    alpha = 50
+                color = date?.dayOfWeek?.let {
+                        getDateColor(it)
+                    } ?: Color.parseColor("#000000")
+
+                date?.let {
+                    if (!isSameMonth(date, firstDayOfMonth)) {
+                        alpha = 0
+                    }
                 }
+
             }
         }
     }
@@ -51,10 +59,10 @@ class DayItemView @JvmOverloads constructor(
         super.onDraw(canvas)
         if (canvas == null) return
 
-        val date = date.dayOfMonth.toString()
-        paint.getTextBounds(date, 0, date.length, bounds)
+        val text = date?.dayOfMonth?.toString() ?: headerText ?: ""
+        paint.getTextBounds(text, 0, text.length, bounds)
         canvas.drawText(
-            date,
+            text,
             (width / 2 - bounds.width() / 2).toFloat() - 2,
             (height / 2 + bounds.height() / 2).toFloat(),
             paint

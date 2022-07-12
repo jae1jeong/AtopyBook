@@ -1,18 +1,21 @@
 package com.james.atopybook.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.alpha
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.james.atopybook.R
 import com.james.atopybook.databinding.FragmentRecordBinding
+import com.james.atopybook.utlities.listener.MotionLayoutListenerFactory
 import com.james.atopybook.views.calendar.CalendarAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,36 +43,14 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
     }
 
     private fun initView() {
-        val transitionLayoutListener = object : MotionLayout.TransitionListener {
-            override fun onTransitionStarted(
-                motionLayout: MotionLayout?,
-                startId: Int,
-                endId: Int
-            ) {
-                binding.recordBtnBottom.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_arrow_bottom))
-            }
-
-            override fun onTransitionChange(
-                motionLayout: MotionLayout?,
-                startId: Int,
-                endId: Int,
-                progress: Float
-            ) {
-            }
-
-            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
-                binding.recordBtnBottom.setImageDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.ic_arrow_top))
-            }
-
-            override fun onTransitionTrigger(
-                motionLayout: MotionLayout?,
-                triggerId: Int,
-                positive: Boolean,
-                progress: Float
-            ) {
-            }
-        }
+        // TODO: 2022/07/12 애니메이션 끝나면 화살표 방향 바꾸기
+        val transitionLayoutListener = MotionLayoutListenerFactory.create(startListener = motionStarted )
         binding.recordMotion.setTransitionListener(transitionLayoutListener)
+
+    }
+
+    private val motionStarted = {
+        Toast.makeText(requireContext(), "motionStarted", Toast.LENGTH_SHORT).show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -78,7 +59,13 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
     }
 
     private fun observeData() {
+        viewModel.previousCalendarEvent.observe(viewLifecycleOwner,{
+            binding.recordVp2Calendar.setCurrentItem(binding.recordVp2Calendar.currentItem-1,true)
+        })
 
+        viewModel.nextCalendarEvent.observe(viewLifecycleOwner,{
+            binding.recordVp2Calendar.setCurrentItem(binding.recordVp2Calendar.currentItem+1,true)
+        })
     }
 
     override fun onResume() {
