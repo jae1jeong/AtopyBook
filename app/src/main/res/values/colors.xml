@@ -17,4 +17,7 @@
     <color name="text_light_black">#626262</color>
     <color name="text_sub_title_color">#626262</color>
     <color name="arrow_backgorund">#4F4F4F</color>
+    <color name="noel">#FFD0C7</color>
+    <color name="purple">#9D69FF</color>
+    <color name="disable_purple">#DAC7FF</color>
 </resources>

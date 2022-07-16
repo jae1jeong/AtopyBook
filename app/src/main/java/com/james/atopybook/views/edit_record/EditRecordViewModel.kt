@@ -7,4 +7,8 @@ import javax.inject.Inject
 @HiltViewModel
 class EditRecordViewModel @Inject constructor() : ViewModel() {
 
+
+    fun postCurrentSymptom(symptom:String,photos:List<String>){
+
+    }
 }

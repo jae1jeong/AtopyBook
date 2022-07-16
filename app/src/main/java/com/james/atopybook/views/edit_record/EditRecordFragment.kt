@@ -29,7 +29,7 @@ class EditRecordFragment : Fragment() {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
                 MaterialTheme{
-                    EditRecordScreen(title = getString(R.string.how_was_today), subTitle =getString(R.string.please_record_compared_yesterday), nextBtnOnClick = {} ) {
+                    EditRecordScreen(title = getString(R.string.how_was_today), subTitle =getString(R.string.please_record_compared_yesterday), nextBtnOnClick = viewModel::postCurrentSymptom ) {
                         requireActivity().onBackPressed()
                     }
                 }

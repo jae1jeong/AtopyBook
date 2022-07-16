@@ -8,20 +8,22 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.james.atopybook.component.Header
 import com.james.atopybook.component.PhotoRecordList
 import com.james.atopybook.component.StickyBottomBtn
 import com.james.atopybook.component.TextRecord
+import com.james.atopybook.R
 
 
 @Composable
 fun EditRecordScreen(
     title: String,
     subTitle: String,
-    textInputLength: Int = 500,
-    nextBtnOnClick: () -> Unit,
+    textInputLength: Int = 200,
+    nextBtnOnClick: (String,List<String>) -> Unit,
     headerBtnOnClick: () -> Unit,
 ) {
     var bottomBtnEnabled by remember {
@@ -36,10 +38,18 @@ fun EditRecordScreen(
         bottomBtnEnabled = symptomText.isNotEmpty()
     }
 
+    var photos by remember {
+        mutableStateOf(listOf(
+            null,
+            "https://cdn.spotvnews.co.kr/news/photo/202206/532813_745010_1738.jpg",
+            "https://cdn.spotvnews.co.kr/news/photo/202206/532813_745010_1738.jpg"
+        ))
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Magenta)
+            .background(color = colorResource(id = R.color.noel))
     ) {
         Column(
             modifier = Modifier
@@ -49,24 +59,19 @@ fun EditRecordScreen(
             Header(title = title, subTitle = subTitle, btnOnClick = headerBtnOnClick)
             TextRecord(
                 maxLength = textInputLength,
-                paddingHorizontal = 10.dp,
                 text = symptomText,
-                onValueChanged = symptomTextChanged
+                onValueChanged = symptomTextChanged,
             )
             Spacer(modifier = Modifier.padding(top = 51.dp))
-            Text(text = "사진 기록")
+            Text(text = stringResource(id = R.string.photo_record))
         }
         PhotoRecordList(
-            photos = listOf(
-                null,
-                "https://cdn.spotvnews.co.kr/news/photo/202206/532813_745010_1738.jpg",
-                "https://cdn.spotvnews.co.kr/news/photo/202206/532813_745010_1738.jpg"
-            ), modifier = Modifier
+            photos = photos, modifier = Modifier
         )
 
         StickyBottomBtn(
-            text = "다음",
-            onClick = nextBtnOnClick,
+            text = stringResource(id = R.string.next),
+            onClick = {nextBtnOnClick(symptomText,photos.filterNotNull())},
             modifier = Modifier.padding(top = 51.dp, bottom = 20.dp),
             enabled = bottomBtnEnabled
         )
