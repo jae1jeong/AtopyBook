@@ -1,4 +1,4 @@
-package com.james.atopybook.views
+package com.james.atopybook.views.calendar
 
 import androidx.lifecycle.ViewModel
 

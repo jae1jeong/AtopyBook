@@ -15,7 +15,7 @@
 
         <variable
             name="checkSymptomViewModel"
-            type="com.james.atopybook.views.CheckSymptomViewModel" />
+            type="com.james.atopybook.views.check_symptom.CheckSymptomViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

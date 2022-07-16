@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.james.atopybook.views.CheckSymptomViewModel" />
+            type="com.james.atopybook.views.check_symptom.CheckSymptomViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"

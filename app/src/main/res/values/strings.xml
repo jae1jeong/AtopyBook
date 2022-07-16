@@ -8,6 +8,7 @@
     <string name="hurts">통증</string>
     <string name="atopy_symptom">아토피 증상</string>
     <string name="how_was_today">오늘 증상은 어땠나요?</string>
+    <string name="please_record_compared_yesterday">어제와 비교하며 증상을 객관적으로 기록해주세요.</string>
     <string name="ointment">복용/도포약</string>
     <string name="ointment_desc">꾸준히 약을 복용하는지,\n스스로 체크하세요.</string>
     <string name="ointment_sub_desc">오늘 빼먹은 약은 없으신가요?</string>

@@ -15,4 +15,6 @@
     <color name="text_black">#292929</color>
     <color name="text_light_gray">#80292929</color>
     <color name="text_light_black">#626262</color>
+    <color name="text_sub_title_color">#626262</color>
+    <color name="arrow_backgorund">#4F4F4F</color>
 </resources>

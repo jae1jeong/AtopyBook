@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.james.atopybook.views.RecordViewModel" />
+            type="com.james.atopybook.views.record.RecordViewModel" />
     </data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/fragment_record_xml_constraintlayout_scene"
-        tools:context=".views.RecordFragment">
+        tools:context=".views.record.RecordFragment">
 
 
         <TextView
@@ -89,11 +89,11 @@
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="13dp"
                 android:src="@drawable/ic_arrow_right"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.viewpager2.widget.ViewPager2
+                android:layout_marginTop="16dp"
                 android:id="@+id/record_vp2_calendar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

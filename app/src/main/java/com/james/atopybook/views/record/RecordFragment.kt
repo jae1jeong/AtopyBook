@@ -1,11 +1,9 @@
-package com.james.atopybook.views
+package com.james.atopybook.views.record
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -48,7 +46,7 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
     }
 
     private val motionStarted = {
-        Toast.makeText(requireContext(), "motionStarted", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(requireContext(), "motionStarted", Toast.LENGTH_SHORT).show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,23 +55,35 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
     }
 
     private fun observeData() {
-        viewModel.previousCalendarEvent.observe(viewLifecycleOwner,{
-            binding.recordVp2Calendar.setCurrentItem(binding.recordVp2Calendar.currentItem-1,true)
-        })
+        viewModel.previousCalendarEvent.observe(viewLifecycleOwner) {
+            binding.recordVp2Calendar.setCurrentItem(
+                binding.recordVp2Calendar.currentItem - 1,
+                true
+            )
+        }
 
-        viewModel.nextCalendarEvent.observe(viewLifecycleOwner,{
-            binding.recordVp2Calendar.setCurrentItem(binding.recordVp2Calendar.currentItem+1,true)
-        })
+        viewModel.nextCalendarEvent.observe(viewLifecycleOwner) {
+            binding.recordVp2Calendar.setCurrentItem(
+                binding.recordVp2Calendar.currentItem + 1,
+                true
+            )
+        }
         viewModel.currentMonth.observe(viewLifecycleOwner,binding.recordTvCurMonth::setText)
     }
 
     override fun onResume() {
         super.onResume()
-//        moveToCheckSymptom()
+        moveToEditRecord()
     }
+
 
     private fun moveToCheckSymptom(){
         val action = RecordFragmentDirections.actionRecordFragmentToCheckSymptomFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun moveToEditRecord(){
+        val action = RecordFragmentDirections.actionRecordFragmentToEditRecordFragment()
         findNavController().navigate(action)
     }
 

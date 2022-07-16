@@ -1,4 +1,4 @@
-package com.james.atopybook.views
+package com.james.atopybook.views.record
 
 import android.util.Log
 import android.view.View
@@ -15,7 +15,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RecordViewModel @Inject constructor(): ViewModel() {
-    // TODO: Implement the ViewModel
     private val dateTimeFormatter = SimpleDateFormat("MM.dd",Locale.getDefault())
     val todayDateFormat = dateTimeFormatter.format(Date())
 

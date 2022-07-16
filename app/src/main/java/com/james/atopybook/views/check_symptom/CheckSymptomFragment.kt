@@ -1,4 +1,4 @@
-package com.james.atopybook.views
+package com.james.atopybook.views.check_symptom
 
 import android.os.Bundle
 import android.view.LayoutInflater

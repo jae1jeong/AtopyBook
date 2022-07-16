@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.james.atopybook.R
 import com.james.atopybook.databinding.FragmentCalendarBinding
 import com.james.atopybook.utlities.CalendarUtils.Companion.getMonthList
-import com.james.atopybook.views.RecordViewModel
+import com.james.atopybook.views.record.RecordViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import org.joda.time.DateTime
 
@@ -39,7 +39,6 @@ class CalendarFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_calendar, container, false)
 
         _binding = FragmentCalendarBinding.bind(view)
-//        binding.calendarViewTvDate.text = DateTime(millis).toString("yyyy-MM")
         binding.calendarView.initCalendar(DateTime(millis),getMonthList(DateTime(millis)))
         return binding.root
     }
