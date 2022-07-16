@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -19,7 +20,8 @@ import androidx.compose.ui.unit.sp
 fun StickyBottomBtn(
     text:String,
     onClick:()->Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    enabled:Boolean
 ){
     Box(contentAlignment = Alignment.BottomCenter,
         modifier = modifier
@@ -28,10 +30,11 @@ fun StickyBottomBtn(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 18.dp)
+                .alpha(if(enabled) 1f else 0.5f)
             , onClick = onClick,
             shape = RoundedCornerShape(16.dp),
-            contentPadding = PaddingValues(vertical = 18.dp)
-
+            contentPadding = PaddingValues(vertical = 18.dp),
+            enabled = enabled
             ) {
             Text(text = text, color = Color.White, fontSize = 16.sp)
         }
