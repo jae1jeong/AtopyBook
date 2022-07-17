@@ -22,7 +22,8 @@ import com.james.atopybook.R
 @Composable
 fun PhotoRecordList(
     photos: List<String?>,
-    modifier: Modifier
+    modifier: Modifier,
+    addBtnOnClick: () -> Unit
 ) {
     val scrollState = rememberScrollState()
     Row(

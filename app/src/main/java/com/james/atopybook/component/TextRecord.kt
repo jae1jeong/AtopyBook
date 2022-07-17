@@ -10,8 +10,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.james.atopybook.R
 
 
 @Composable
@@ -37,9 +39,7 @@ fun TextRecord(
                 .padding(20.dp),
         ){
             if(text.isEmpty()){
-                Text(text = "증상에 대한 나의 생각이나 느낌을 기록하세요.\n" +
-                        "나중에 의사선생님과 상의할 때 도움이 된답니다!\n" +
-                        "(예 : 보습제를 다른 것으로 바꿔야겠어.)", fontSize = 14.sp)
+                Text(text = stringResource(id = R.string.edit_symptom_hint), fontSize = 14.sp)
             }else{
                 Text(text = text)
             }

@@ -73,7 +73,7 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
 
     override fun onResume() {
         super.onResume()
-        moveToEditRecord()
+        moveToSearchDrug()
     }
 
 
@@ -85,6 +85,12 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
     private fun moveToEditRecord(){
         val action = RecordFragmentDirections.actionRecordFragmentToEditRecordFragment()
         findNavController().navigate(action)
+    }
+
+    private fun moveToSearchDrug(){
+        val action = RecordFragmentDirections.actionRecordFragmentToSearchDrugFragment()
+        findNavController().navigate(action)
+
     }
 
     override fun onDestroyView() {

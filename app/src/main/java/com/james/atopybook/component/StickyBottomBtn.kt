@@ -33,7 +33,6 @@ fun StickyBottomBtn(
         Button(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 18.dp)
             , onClick = onClick,
             shape = RoundedCornerShape(16.dp),
             contentPadding = PaddingValues(vertical = 18.dp),

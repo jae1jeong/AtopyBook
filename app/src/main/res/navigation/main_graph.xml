@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_recordFragment_to_editRecordFragment"
             app:destination="@id/editRecordFragment" />
+        <action
+            android:id="@+id/action_recordFragment_to_searchDrugFragment"
+            app:destination="@id/searchDrugFragment" />
     </fragment>
     <fragment
         android:id="@+id/checkSymptomFragment"
@@ -36,6 +39,13 @@
         android:name="com.james.atopybook.views.edit_record.EditRecordFragment"
         android:label="fragment_record"
         tools:layout="@layout/fragment_edit_record" />
+
+
+    <fragment
+        android:id="@+id/searchDrugFragment"
+        android:name="com.james.atopybook.views.search_drug.SearchDrugFragment"
+        android:label="fragment_search_drug"
+        tools:layout="@layout/fragment_search_drug" />
 
 
 </navigation>

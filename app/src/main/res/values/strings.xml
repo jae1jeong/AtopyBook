@@ -19,4 +19,7 @@
     <string name="how_much_is_it_compared_to_yesterday">어제와 비교했을 때 어느 정도인가요?</string>
     <string name="next">다음</string>
     <string name="photo_record">사진 기록</string>
+    <string name="edit_symptom_hint">증상에 대한 나의 생각이나 느낌을 기록하세요.\n나중에 의사선생님과 상의할 때 도움이 된답니다!\n(예 : 보습제를 다른 것으로 바꿔야겠어.)</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -11,11 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.james.atopybook.component.Header
-import com.james.atopybook.component.PhotoRecordList
-import com.james.atopybook.component.StickyBottomBtn
-import com.james.atopybook.component.TextRecord
 import com.james.atopybook.R
+import com.james.atopybook.component.*
 
 
 @Composable
@@ -33,6 +30,10 @@ fun EditRecordScreen(
         mutableStateOf("")
     }
 
+    var showSelectPhotoDialog by remember {
+        mutableStateOf(false)
+    }
+
     val symptomTextChanged = { text: String ->
         if (text.length <= textInputLength) symptomText = text
         bottomBtnEnabled = symptomText.isNotEmpty()
@@ -44,6 +45,12 @@ fun EditRecordScreen(
             "https://cdn.spotvnews.co.kr/news/photo/202206/532813_745010_1738.jpg",
             "https://cdn.spotvnews.co.kr/news/photo/202206/532813_745010_1738.jpg"
         ))
+    }
+
+    if(showSelectPhotoDialog){
+        SelectPhotoDialog(){
+            showSelectPhotoDialog = !showSelectPhotoDialog
+        }
     }
 
     Column(
@@ -67,7 +74,9 @@ fun EditRecordScreen(
         }
         PhotoRecordList(
             photos = photos, modifier = Modifier
-        )
+        ) {
+            showSelectPhotoDialog = true
+        }
 
         StickyBottomBtn(
             text = stringResource(id = R.string.next),
